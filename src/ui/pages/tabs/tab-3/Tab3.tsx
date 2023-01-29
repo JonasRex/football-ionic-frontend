@@ -1,10 +1,24 @@
-import React from 'react';
-import { IonContent, IonTitle } from '@ionic/react';
+import { IonButton, IonContent, IonIcon, IonItem, IonLabel } from '@ionic/react';
+import { useEffect } from 'react';
+import { usePlayerStore } from 'store/player';
+import { closeOutline } from 'ionicons/icons';
 
-const Tab3: React.FC = () => (
-  <IonContent color={'white-background'}>
-    <IonTitle>Tab3</IonTitle>
-  </IonContent>
-);
+const Tab3: React.FC = () => {
+  const { players, addPlayer, deletePlayer } = usePlayerStore((state) => state);
 
+  useEffect(() => {
+    usePlayerStore.getState().getPlayers();
+  }, []);
+
+  return (
+    <IonContent color={'white-background'}>
+      {players?.map((player) => (
+        <IonItem key={player.id}>
+          <IonLabel>{player.first_name}</IonLabel>
+          <IonIcon onClick={() => deletePlayer(player.id)} slot="end" icon={closeOutline} />
+        </IonItem>
+      ))}
+    </IonContent>
+  );
+};
 export default Tab3;
