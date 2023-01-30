@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { usePlayerStore } from 'store/player';
 import { closeOutline } from 'ionicons/icons';
 
-const Tab3: React.FC = () => {
+const PlayerTab: React.FC = () => {
   const { players, addPlayer, deletePlayer } = usePlayerStore((state) => state);
 
   useEffect(() => {
@@ -21,4 +21,4 @@ const Tab3: React.FC = () => {
     </IonContent>
   );
 };
-export default Tab3;
+export default PlayerTab;

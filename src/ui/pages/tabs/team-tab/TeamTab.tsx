@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useTeamStore } from 'store/team';
 import { closeOutline } from 'ionicons/icons';
 
-const Tab2: React.FC = () => {
+const TeamTab: React.FC = () => {
   const { teams, addTeam, deleteTeam } = useTeamStore((state) => state);
 
   useEffect(() => {
@@ -22,4 +22,4 @@ const Tab2: React.FC = () => {
     </IonContent>
   );
 };
-export default Tab2;
+export default TeamTab;

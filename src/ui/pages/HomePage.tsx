@@ -10,21 +10,21 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonMenu,
   IonMenuButton,
   IonPage,
-  IonTitle,
   IonToolbar,
-  IonItem,
   IonButton,
   useIonRouter,
+  IonLabel,
 } from '@ionic/react';
-import { peopleOutline, ticketOutline, walletOutline, cameraOutline } from 'ionicons/icons';
+import { homeOutline, peopleOutline, bodyOutline, globeOutline, cashOutline } from 'ionicons/icons';
 
-import Tab1 from './tabs/tab-1/Tab1';
-import Tab2 from './tabs/tab-2/Tab2';
-import Tab3 from './tabs/tab-3/Tab3';
-import Tab4 from './tabs/tab-4/Tab4';
+import MainTab from './tabs/main-tab/MainTab';
+import WorldTab from './tabs/world-tab/WorldTab';
+import TeamTab from './tabs/team-tab/TeamTab';
+import PlayerTab from './tabs/player-tab/PlayerTab';
+import TransferTab from './tabs/transfer-tab/TransferTab';
+
 import { supabase } from 'apis/supabaseClient';
 import { useAuthUserStore } from 'store/user';
 
@@ -73,6 +73,7 @@ const HomePage: React.FC = () => {
                 return (
                   <IonTabButton key={i} tab={`tab${i}`} href={p.path}>
                     <IonIcon icon={p.icon} />
+                    <IonLabel>{p.name}</IonLabel>
                   </IonTabButton>
                 );
               })}
@@ -88,31 +89,38 @@ export default HomePage;
 
 const pages = [
   {
-    name: 'photo',
-    icon: cameraOutline,
-    path: '/tab1',
-    component: Tab1,
+    name: 'Main',
+    icon: homeOutline,
+    path: '/main',
+    component: MainTab,
     redirect: true,
   },
   {
-    name: 'people',
+    name: 'World',
+    icon: globeOutline,
+    path: '/world',
+    component: WorldTab,
+    redirect: false,
+  },
+  {
+    name: 'Teams',
     icon: peopleOutline,
-    path: '/tab2',
-    component: Tab2,
+    path: '/teams',
+    component: TeamTab,
     redirect: false,
   },
   {
-    name: 'ticket',
-    icon: ticketOutline,
-    path: '/tab3',
-    component: Tab3,
+    name: 'Players',
+    icon: bodyOutline,
+    path: '/players',
+    component: PlayerTab,
     redirect: false,
   },
   {
-    name: 'wallet',
-    icon: walletOutline,
-    path: '/tab4',
-    component: Tab4,
+    name: 'Transfers',
+    icon: cashOutline,
+    path: '/transfers',
+    component: TransferTab,
     redirect: false,
   },
 ];
