@@ -60,37 +60,3 @@ const LandingPage: React.FC = () => {
 };
 
 export default LandingPage;
-
-/*
-    <IonPage>
-      <IonContent fullscreen>
-        <div className="flex flex-col h-full justify-around mx-10">
-          <div>
-            <IonImg src={EasyMove} className="h-[40px] w-full" />
-          </div>
-          <div>
-            <IonButton className="h-[60px] w-full my-3" onClick={() => router.push('/login')} expand="full">
-              Login
-            </IonButton>
-            <IonButton className="h-[60px] w-full my-3" onClick={() => router.push('/register')} expand="full">
-              Registrer
-            </IonButton>
-          </div>
-          <div>
-            <Separator text="Login med" />
-            <div className="flex justify-between gap-2">
-              <SocialLoginButton provider="facebook" onClick={() => signInWithThirdParty('facebook')} />
-              <SocialLoginButton provider="google" onClick={() => signInWithThirdParty('google')} />
-              <SocialLoginButton provider="apple" onClick={() => signInWithThirdParty('apple')} />
-            </div>
-            <IonText>
-              Brug for en løsning til virksomheder?
-              <Link className="ml-1" style={{ textDecorationLine: 'underline' }} to="/register">
-                Klik her
-              </Link>
-            </IonText>
-          </div>
-        </div>
-      </IonContent>
-    </IonPage>
-*/
