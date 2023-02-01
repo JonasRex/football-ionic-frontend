@@ -9,6 +9,57 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      category: {
+        Row: {
+          id: number
+          name: string
+        }
+        Insert: {
+          id?: number
+          name: string
+        }
+        Update: {
+          id?: number
+          name?: string
+        }
+      }
+      group: {
+        Row: {
+          group_fk: string | null
+          id: string
+          leaderId: string | null
+          something: string
+          workerId: string | null
+        }
+        Insert: {
+          group_fk?: string | null
+          id?: string
+          leaderId?: string | null
+          something: string
+          workerId?: string | null
+        }
+        Update: {
+          group_fk?: string | null
+          id?: string
+          leaderId?: string | null
+          something?: string
+          workerId?: string | null
+        }
+      }
+      group_type: {
+        Row: {
+          id: string
+          name: string
+        }
+        Insert: {
+          id?: string
+          name: string
+        }
+        Update: {
+          id?: string
+          name?: string
+        }
+      }
       ios_subscription: {
         Row: {
           auto_renew_product_id: string | null
@@ -36,6 +87,20 @@ export interface Database {
         }
       }
       permission: {
+        Row: {
+          id: string
+          name: string
+        }
+        Insert: {
+          id?: string
+          name: string
+        }
+        Update: {
+          id?: string
+          name?: string
+        }
+      }
+      person: {
         Row: {
           id: string
           name: string
@@ -124,6 +189,46 @@ export interface Database {
         Update: {
           profile_fk?: string
           role_fk?: string
+        }
+      }
+      question: {
+        Row: {
+          id: number
+          text: string
+          title: string
+        }
+        Insert: {
+          id?: number
+          text: string
+          title: string
+        }
+        Update: {
+          id?: number
+          text?: string
+          title?: string
+        }
+      }
+      question_to_category: {
+        Row: {
+          categoryId: number
+          order: number
+          postId: number
+          postToCategoryId: number
+          questionId: number | null
+        }
+        Insert: {
+          categoryId: number
+          order: number
+          postId: number
+          postToCategoryId?: number
+          questionId?: number | null
+        }
+        Update: {
+          categoryId?: number
+          order?: number
+          postId?: number
+          postToCategoryId?: number
+          questionId?: number | null
         }
       }
       role: {
