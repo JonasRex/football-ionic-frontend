@@ -2,13 +2,19 @@ import { IonButton, IonContent, IonIcon, IonItem, IonLabel } from '@ionic/react'
 import { useEffect } from 'react';
 import { useTeamStore } from 'store/team';
 import { closeOutline } from 'ionicons/icons';
+import { getAllTeams, deleteTeam, addTeam } from 'services/teams-service';
+import { Team } from 'types/team-types';
 
 const TeamTab: React.FC = () => {
-  const { teams, addTeam, deleteTeam } = useTeamStore((state) => state);
+  const { teams } = useTeamStore((state) => state);
 
   useEffect(() => {
-    useTeamStore.getState().getTeams();
+    getAllTeams();
   }, []);
+
+  const handleAddTeam = async () => {
+    await addTeam('AGF', 1950);
+  };
 
   return (
     <IonContent color={'white-background'}>
@@ -18,7 +24,7 @@ const TeamTab: React.FC = () => {
           <IonIcon onClick={() => deleteTeam(team.id)} slot="end" icon={closeOutline} />
         </IonItem>
       ))}
-      <IonButton onClick={() => addTeam('test', 2022)}>Add Team</IonButton>
+      <IonButton onClick={handleAddTeam}>Add Team</IonButton>
     </IonContent>
   );
 };
